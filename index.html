@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>بداية جديدة ❤️</title>
+    <style>
+        body {
+            background-color: #0d1117;
+            color: #ffffff;
+            font-family: 'Cairo', sans-serif, Tahoma;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 600px;
+            width: 100%;
+        }
+        .envelope {
+            background: #ff4757;
+            width: 220px;
+            height: 140px;
+            margin: 20px auto;
+            border-radius: 10px;
+            position: relative;
+            cursor: pointer;
+            box-shadow: 0 10px 25px rgba(255, 71, 87, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            font-weight: bold;
+            color: white;
+            transition: transform 0.3s ease;
+        }
+        .envelope:hover {
+            transform: scale(1.05);
+        }
+        .content {
+            display: none;
+            margin-top: 20px;
+            animation: fadeIn 1s ease-in-out;
+        }
+        .gallery img {
+            width: 100%;
+            max-height: 350px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin: 10px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+        }
+        .countdown {
+            background: rgba(255, 255, 255, 0.08);
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px 0;
+            font-size: 18px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>اضغط على الظرف عشان تفتح الهدية ❤️</h2>
+        
+        <!-- الظرف -->
+        <div class="envelope" onclick="openEnvelope()">
+            💌 افتح الظرف
+        </div>
+
+        <!-- محتوى الموقع اللي هيظهر بعد فتح الظرف -->
+        <div class="content" id="myContent">
+            <div class="countdown" id="countdownTimer">
+                جاري حساب العد التصاعدي من بداية جديدة (26 أغسطس 2026)...
+            </div>
+
+            <p style="font-size: 20px; line-height: 1.6; color: #ff6b81;">
+                كل ثانية بتعدي من تاريخ 26/8/2026 وهي بداية جديدة لحاجة حلوة بينا تدوم العمر كله يا أطيب قلب.
+            </p>
+
+            <!-- الصور -->
+            <div class="gallery">
+                <img src="IMG-20260827-WA000..." alt="صورة ذكرى">
+                <img src="Screenshot_20260827-..." alt="صورة ذكرى">
+                <img src="gidhzhsvdhh.jpeg" alt="صورة ذكرى">
+                <img src="images hsdkd.jpeg" alt="صورة ذكرى">
+                <img src="images jdhdgsgsh.jpeg" alt="صورة ذكرى">
+            </div>
+
+            <!-- الأغنية -->
+            <audio id="myAudio" controls loop style="width: 100%; margin-top: 20px;">
+                <source src="Aumbtgherm.m4a" type="audio/mp4">
+                متصفحك لا يدعم تشغيل الصوت
+            </audio>
+        </div>
+    </div>
+
+    <script>
+        function openEnvelope() {
+            document.getElementById('myContent').style.display = 'block';
+            document.querySelector('.envelope').style.display = 'none';
+            var audio = document.getElementById('myAudio');
+            audio.play().catch(e => console.log("Audio play blocked"));
+        }
+
+        // العد التصاعدي من 26 أغسطس 2026
+        const startDate = new Date("2026-08-26T00:00:00").getTime();
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const difference = now - startDate;
+
+            if (difference < 0) {
+                document.getElementById("countdownTimer").innerHTML = "التاريخ يبدأ قريباً!";
+                return;
+            }
+
+            const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+            document.getElementById("countdownTimer").innerHTML = 
+                `⏳ ممرّ على البداية الجديدة (26/8/2026):<br>` +
+                `<b>${days}</b> يوم و <b>${hours}</b> ساعة و <b>${minutes}</b> دقيقة و <b>${seconds}</b> ثانية ❤️`;
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+    </script>
+
+</body>
+</html>
